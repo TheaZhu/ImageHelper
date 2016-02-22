@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.thea.image.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <ImageView
+        android:id="@+id/iv_1"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:id="@+id/iv_2"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_toRightOf="@id/iv_1"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:id="@+id/iv_3"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_below="@id/iv_1"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:id="@+id/iv_4"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_below="@id/iv_2"
+        android:layout_toRightOf="@id/iv_3"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:id="@+id/iv_5"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_below="@id/iv_3"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:id="@+id/iv_6"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_below="@id/iv_4"
+        android:layout_toRightOf="@id/iv_5"
+        android:scaleType="centerCrop"/>
+
+</RelativeLayout>
