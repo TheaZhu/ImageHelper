@@ -6,6 +6,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
+import android.graphics.LinearGradient;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
@@ -15,6 +17,18 @@ import android.graphics.Shader;
  * Created by Thea on 2016/2/18 0018.
  */
 public class ImageHelper {
+
+    /**
+     * 旋转图片
+     * @param bmp
+     * @param degree
+     * @return
+     */
+    public static Bitmap rotateImage(Bitmap bmp, float degree) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(degree);
+        return Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+    }
 
     /**
      * 调整图片色光三原色（色相，饱和度，亮度）
@@ -238,6 +252,25 @@ public class ImageHelper {
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setShader(shader);
         canvas.drawCircle(width / 2, height / 2, Math.min(width, height) / 2, paint);
+
+        return bitmap;
+    }
+
+    /**
+     * 图片倒影
+     * @param bmp
+     * @return
+     */
+    public static Bitmap invertImage(Bitmap bmp) {
+        Bitmap bitmap = rotateImage(bmp, 180);
+
+        Canvas canvas = new Canvas(bitmap);
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        //设置线性渐变的着色器
+        paint.setShader(new LinearGradient(0, 0, bmp.getWidth(), bmp.getHeight() * 0.5f,
+                0XDD000000, 0X10000000, Shader.TileMode.CLAMP));
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+        canvas.drawRect(0, 0, bmp.getWidth(), bmp.getHeight(), paint);
 
         return bitmap;
     }
